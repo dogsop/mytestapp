@@ -16,7 +16,7 @@ Ext.define('MyAppName.view.Main', {
      
         items: [
             {
-                xtype: 'temperaturespanel'
+                xtype: 'tempmonitorpanel'
             },
             {
                 xtype: 'timerspanel'
