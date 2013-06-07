@@ -27,7 +27,7 @@ Ext.application({
     ],
 
     views: [
-        'Main', 'Temperatures'
+        'Main', 'Temperatures', 'Timers'
     ],
 
     icon: {

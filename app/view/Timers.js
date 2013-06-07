@@ -1,22 +1,22 @@
-Ext.define('MyAppName.view.Temperatures', {
+Ext.define('MyAppName.view.Timers', {
     extend: 'Ext.Panel',
-    xtype: 'temperaturespanel',
+    xtype: 'timerspanel',
 
     config: {
 
         scrollable: true,
         styleHtmlContent: true,
-        title: 'Temperatures',
-        iconCls: 'home',
+        title: 'Timers',
+        iconCls: 'action',
     	
         items: {
             docked: 'top',
             xtype: 'titlebar',
-            title: 'Smellydog Smoker Monitor'
+            title: 'Cooking Timers'
         },
 
         html: [
-               "This is where the temperatures will go."
+               "This is where the timers will go."
            ].join("")
         
     }
