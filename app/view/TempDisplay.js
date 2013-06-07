@@ -5,6 +5,7 @@ Ext.define('MyAppName.view.TempDisplay', {
     config: {
 
     	temperature: null,
+    	titleLabel: 'Temp',
     	
         styleHtmlContent: true,
         layout: 'hbox',
