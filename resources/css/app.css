@@ -17,8 +17,10 @@ html,body{position:relative;width:100%;height:100%}.x-fullscreen{position:absolu
 .temperaturedisplay {
 	text-align: right;
     font-size: 75px;
+    margin:0px 0px 10px 0px;
 }
 
 .temperaturelabeldisplay {
     font-size: 25px;
+    margin:25px 20px 10px 5px;
 }
