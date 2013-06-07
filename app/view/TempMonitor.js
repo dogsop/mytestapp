@@ -19,13 +19,11 @@ Ext.define('MyAppName.view.TempMonitor', {
                 {
                 	itemId: 'smokerTemp',
                     xtype: 'tempdisplaypanel',
-                    html: 'smoker temp',
                     flex: 1
                 },
                 {
                 	itemId: 'meatTemp',
                     xtype: 'tempdisplaypanel',
-                    html: 'meat temp',
                     flex: 1
                 }
             ],
