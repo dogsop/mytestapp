@@ -16,7 +16,7 @@ Ext.define('MyAppName.view.Temperatures', {
         },
 
         html: [
-               "This is where the temperatures will go."
+               "This is where the temperatures will go when I finish."
            ].join("")
         
     }
