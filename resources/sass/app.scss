@@ -8,3 +8,28 @@
 
 // Examples of using the icon mixin:
 // @include icon('user');
+
+.temperaturebox {
+-webkit-border-radius: 0.3em;
+-moz-border-radius: 0.3em;
+-ms-border-radius: 0.3em;
+-o-border-radius: 0.3em;
+border-radius: 0.3em;
+-webkit-box-shadow: rgba(0, 0, 0, 0.8) 0 0.2em 0.6em;
+-moz-box-shadow: rgba(0, 0, 0, 0.8) 0 0.2em 0.6em;
+box-shadow: rgba(0, 0, 0, 0.8) 0 0.2em 0.6em;
+border: 0.15em solid #1985d0;
+  	margin: .5em;
+background-image: none;
+}
+
+.temperaturedisplay {
+text-align: right;
+    font-size: 75px;
+    margin:0px 0px 10px 0px;
+}
+
+.temperaturelabeldisplay {
+    font-size: 25px;
+    margin:25px 20px 10px 5px;
+}
