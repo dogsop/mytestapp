@@ -14,6 +14,7 @@ Ext.define('MyAppName.view.TempDisplay', {
         items: [
                 {
                     docked: 'top',
+                	itemId: 'tempTitle',
                     xtype: 'titlebar',
                     title: 'Smoker'
                 },
@@ -30,6 +31,15 @@ Ext.define('MyAppName.view.TempDisplay', {
                     html: '&#176F'
                 }
             ]
-        
+    },
+	// Fires when the Panel is initialized
+	initialize: function () {
+	    console.log('TempDisplay ~ initialize');
+	    this.callParent(arguments);
     }
+
+},
+function() {
+    console.log('TempDisplay Created!');
+    //alert('Main Created!');
 });
