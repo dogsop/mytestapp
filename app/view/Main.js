@@ -35,34 +35,77 @@ Ext.define('MyAppName.view.Main', {
     	    console.log('tempMonitorPanel not found');
         } else {
     	    console.log('tempMonitorPanel found');
-    	    console.log('Looking for temp panels');
-    	    var smokerPanel = tempMonitorPanel.getComponent('smokerPanel'); 
-            if (smokerPanel == undefined) {
-        	    console.log('smokerPanel not found');
+        	
+    	    var vLayoutPanel = tempMonitorPanel.getComponent('vLayoutPanel'); 
+            if (vLayoutPanel == undefined) {
+        	    console.log('vLayoutPanel not found');
             } else {
-        	    console.log('smokerPanel found');
-        	    var title = smokerPanel.getComponent('tempTitle'); 
-                if (title == undefined) {
-            	    console.log('title not found');
+        	    console.log('vLayoutPanel found');
+        	    console.log('Looking for temp panels');
+        	    var vSmokerPanel = vLayoutPanel.getComponent('vSmokerPanel'); 
+                if (vSmokerPanel == undefined) {
+            	    console.log('vSmokerPanel not found');
                 } else {
-            	    console.log('Setting title');
-                	title.setTitle('Smoker');
+            	    console.log('vSmokerPanel found');
+            	    var title = vSmokerPanel.getComponent('tempTitle'); 
+                    if (title == undefined) {
+                	    console.log('title not found');
+                    } else {
+                	    console.log('Setting title');
+                    	title.setTitle('Smoker');
+                    }
+                }
+        	    
+        	    var vMeatPanel = vLayoutPanel.getComponent('vMeatPanel'); 
+                if (vMeatPanel == undefined) {
+            	    console.log('vMeatPanel not found');
+                } else {
+            	    console.log('vMeatPanel found');
+            	    var title = vMeatPanel.getComponent('tempTitle'); 
+                    if (title == undefined) {
+                	    console.log('title not found');
+                    } else {
+                	    console.log('Setting title');
+                    	title.setTitle('Meat');
+                    }
                 }
             }
-    	    
-    	    var meatPanel = tempMonitorPanel.getComponent('meatPanel'); 
-            if (meatPanel == undefined) {
-        	    console.log('meatPanel not found');
+        	
+    	    var hLayoutPanel = tempMonitorPanel.getComponent('hLayoutPanel'); 
+            if (hLayoutPanel == undefined) {
+        	    console.log('hLayoutPanel not found');
             } else {
-        	    console.log('meatPanel found');
-        	    var title = meatPanel.getComponent('tempTitle'); 
-                if (title == undefined) {
-            	    console.log('title not found');
+        	    console.log('hLayoutPanel found');
+        	    console.log('Looking for temp panels');
+        	    var hSmokerPanel = hLayoutPanel.getComponent('hSmokerPanel'); 
+                if (hSmokerPanel == undefined) {
+            	    console.log('hSmokerPanel not found');
                 } else {
-            	    console.log('Setting title');
-                	title.setTitle('Meat');
+            	    console.log('hSmokerPanel found');
+            	    var title = hSmokerPanel.getComponent('tempTitle'); 
+                    if (title == undefined) {
+                	    console.log('title not found');
+                    } else {
+                	    console.log('Setting title');
+                    	title.setTitle('Smoker');
+                    }
+                }
+        	    
+        	    var hMeatPanel = hLayoutPanel.getComponent('hMeatPanel'); 
+                if (hMeatPanel == undefined) {
+            	    console.log('hMeatPanel not found');
+                } else {
+            	    console.log('hMeatPanel found');
+            	    var title = hMeatPanel.getComponent('tempTitle'); 
+                    if (title == undefined) {
+                	    console.log('title not found');
+                    } else {
+                	    console.log('Setting title');
+                    	title.setTitle('Meat');
+                    }
                 }
             }
+        	
         }
 
 	    this.callParent(arguments);
