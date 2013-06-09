@@ -52,6 +52,8 @@ Ext.application({
         // Destroy the #appLoadingIndicator element
         Ext.fly('appLoadingIndicator').destroy();
 
+	    console.log('Adding MyAppName.view.Main to Viewport');
+        
         // Initialize the main view
         Ext.Viewport.add(Ext.create('MyAppName.view.Main'));
     },

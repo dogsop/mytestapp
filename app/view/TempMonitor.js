@@ -80,7 +80,57 @@ Ext.define('MyAppName.view.TempMonitor', {
 
 	    // Add a Listener. Listen for [Viewport ~ Orientation] Change.
 	    Ext.Viewport.on('orientationchange', 'handleOrientationChange', this, {buffer: 50 });
-	    
+
+	    var vLayoutPanel = this.getComponent('vLayoutPanel'); 
+        if (vLayoutPanel == undefined) {
+    	    console.log('vLayoutPanel not found');
+        } else {
+    	    console.log('vLayoutPanel found');
+    	    console.log('Looking for temp panels');
+    	    var vSmokerPanel = vLayoutPanel.getComponent('vSmokerPanel'); 
+            if (vSmokerPanel == undefined) {
+        	    console.log('vSmokerPanel not found');
+            } else {
+        	    console.log('vSmokerPanel found');
+        	    vSmokerPanel.setTitleLabel('Smoker');
+        	    vSmokerPanel.setTemperature('219');
+            }
+    	    
+    	    var vMeatPanel = vLayoutPanel.getComponent('vMeatPanel'); 
+            if (vMeatPanel == undefined) {
+        	    console.log('vMeatPanel not found');
+            } else {
+        	    console.log('vMeatPanel found');
+        	    vMeatPanel.setTitleLabel('Meat');
+        	    vMeatPanel.setTemperature('128');
+            }
+        }
+    	
+	    var hLayoutPanel = this.getComponent('hLayoutPanel'); 
+        if (hLayoutPanel == undefined) {
+    	    console.log('hLayoutPanel not found');
+        } else {
+    	    console.log('hLayoutPanel found');
+    	    console.log('Looking for temp panels');
+    	    var hSmokerPanel = hLayoutPanel.getComponent('hSmokerPanel'); 
+            if (hSmokerPanel == undefined) {
+        	    console.log('hSmokerPanel not found');
+            } else {
+        	    console.log('hSmokerPanel found');
+        	    hSmokerPanel.setTitleLabel('Smoker');
+        	    hSmokerPanel.setTemperature('219');
+            }
+    	    
+    	    var hMeatPanel = hLayoutPanel.getComponent('hMeatPanel'); 
+            if (hMeatPanel == undefined) {
+        	    console.log('hMeatPanel not found');
+            } else {
+        	    console.log('hMeatPanel found');
+        	    hMeatPanel.setTitleLabel('Meat');
+        	    hMeatPanel.setTemperature('128');
+            }
+        }
+
 	    this.callParent(arguments);
 	},
 	handleOrientationChange: function(){
