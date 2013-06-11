@@ -1,14 +1,10 @@
 <?php
 error_reporting(E_ALL | E_STRICT);
 
-$socket = socket_create(AF_INET, SOCK_DGRAM, SOL_UDP);
+$smokerTemp = 220 + rand(5, 15);
+$meatTemp = 120 + rand(1,3);
 
-socket_bind($socket, '127.0.0.1', 9930);
-
-$from = "";
-$port = 0;
-socket_recvfrom($socket, $buf, 128, 0, $from, $port);
-
+$buf = '{ smokerTemp: ' . $smokerTemp . ' , meatTemp: ' . $meatTemp . ' }';
 header('Content-Type: application/json');
 echo $buf . PHP_EOL;
 

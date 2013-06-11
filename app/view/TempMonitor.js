@@ -26,12 +26,12 @@ Ext.define('MyAppName.view.TempMonitor', {
                                 title: 'Smellydog Smoker Monitor'
                             },
                             {
-                            	itemId: 'vSmokerPanel',
+                            	id: 'vSmokerPanel',
                                 xtype: 'tempdisplaypanel',
                                 flex: 1
                             },
                             {
-                            	itemId: 'vMeatPanel',
+                            	id: 'vMeatPanel',
                                 xtype: 'tempdisplaypanel',
                                 flex: 1
                             }
@@ -50,12 +50,12 @@ Ext.define('MyAppName.view.TempMonitor', {
                                 title: 'Smellydog Smoker Monitor'
                             },
                             {
-                            	itemId: 'hSmokerPanel',
+                            	id: 'hSmokerPanel',
                                 xtype: 'tempdisplaypanel',
                                 flex: 1
                             },
                             {
-                            	itemId: 'hMeatPanel',
+                            	id: 'hMeatPanel',
                                 xtype: 'tempdisplaypanel',
                                 flex: 1
                             }
@@ -67,9 +67,6 @@ Ext.define('MyAppName.view.TempMonitor', {
 	// Fires when the Panel is initialized
 	initialize: function () {
 	    console.log('TempMonitor ~ initialize');
-	    
-        //var smokerDataStore = Ext.getStore('SmokerDataStore');
-        var smokerData = smokerDataStore.getAt(0);
 	    
 	    if(Ext.Viewport.getOrientation()=='portrait') {
 		    console.log('orientation is portrait');
@@ -96,7 +93,7 @@ Ext.define('MyAppName.view.TempMonitor', {
             } else {
         	    console.log('vSmokerPanel found');
         	    vSmokerPanel.setTitleLabel('Smoker');
-        	    vSmokerPanel.setTemperature(smokerData.get('smokerTemp'));
+        	    //vSmokerPanel.setTemperature(smokerData.smokerTemp);
             }
     	    
     	    var vMeatPanel = vLayoutPanel.getComponent('vMeatPanel'); 
@@ -105,7 +102,7 @@ Ext.define('MyAppName.view.TempMonitor', {
             } else {
         	    console.log('vMeatPanel found');
         	    vMeatPanel.setTitleLabel('Meat');
-        	    vMeatPanel.setTemperature(smokerData.get('meatTemp'));
+        	    //vMeatPanel.setTemperature(smokerData.meatTemp);
             }
         }
     	
@@ -121,7 +118,7 @@ Ext.define('MyAppName.view.TempMonitor', {
             } else {
         	    console.log('hSmokerPanel found');
         	    hSmokerPanel.setTitleLabel('Smoker');
-        	    hSmokerPanel.setTemperature(smokerData.get('smokerTemp'));
+        	    //hSmokerPanel.setTemperature(smokerData.smokerTemp);
             }
     	    
     	    var hMeatPanel = hLayoutPanel.getComponent('hMeatPanel'); 
@@ -130,7 +127,7 @@ Ext.define('MyAppName.view.TempMonitor', {
             } else {
         	    console.log('hMeatPanel found');
         	    hMeatPanel.setTitleLabel('Meat');
-        	    hMeatPanel.setTemperature(smokerData.get('meatTemp'));
+        	    //hMeatPanel.setTemperature(smokerData.meatTemp);
             }
         }
 

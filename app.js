@@ -14,7 +14,7 @@
 //@require @packageOverrides
 
 
-var smokerDataStore;
+var smokerData = { smokerTemp: '---', meatTemp: '---' };
 
 //<debug>
 Ext.Loader.setPath({
@@ -29,6 +29,8 @@ Ext.application({
         'Ext.MessageBox'
     ],
 
+    controllers: [ 'TempMonitorController' ],
+    
     views: [
         'Main', 'TempMonitor', 'Timers', 'TempDisplay'
     ],
@@ -59,9 +61,9 @@ Ext.application({
         // Destroy the #appLoadingIndicator element
         Ext.fly('appLoadingIndicator').destroy();
 
-	    console.log('Creating data store');
-        smokerDataStore = Ext.getStore('SmokerDataStore');
-        console.log(smokerDataStore);
+        console.log('calling updateTemps');
+        updateTemps();
+        console.log('returned from updateTemps');
 
 	    console.log('Adding MyAppName.view.Main to Viewport');
         // Initialize the main view
@@ -80,3 +82,4 @@ Ext.application({
         );
     }
 });
+

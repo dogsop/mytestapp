@@ -23,7 +23,7 @@ Ext.define('MyAppName.view.TempDisplay', {
                 	itemId: 'tempValue',
                 	baseCls: 'temperaturedisplay',
                     flex: 1,
-                	html: '85'
+                	html: '---'
                 },
                 {
                     xtype: 'panel',
@@ -52,12 +52,12 @@ Ext.define('MyAppName.view.TempDisplay', {
     },
 
     updateTemperature: function(newTemperature, oldTemperature) {
-    	console.log('updateTemperature called. New temperature is: ' + newTemperature);
+    	//console.log('updateTemperature called. New temperature is: ' + newTemperature);
 		var tempValue = this.getComponent('tempValue');
 		if (tempValue == undefined) {
 			console.log('tempValue not found');
 		} else {
-			console.log('Setting tempValue');
+			//console.log('Setting tempValue');
 			tempValue.setHtml(newTemperature);
 		}
     }
