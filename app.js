@@ -13,6 +13,9 @@
 // DO NOT DELETE - this directive is required for Sencha Cmd packages to work.
 //@require @packageOverrides
 
+
+var smokerDataStore;
+
 //<debug>
 Ext.Loader.setPath({
     'Ext': 'touch/src'
@@ -30,7 +33,9 @@ Ext.application({
         'Main', 'TempMonitor', 'Timers', 'TempDisplay'
     ],
 
-    models: [ 'SmokerData'],
+    models: [ 'SmokerData' ],
+    
+    stores: [ 'SmokerDataStore' ],
     
     icon: {
         '57': 'resources/icons/Icon.png',
@@ -54,8 +59,11 @@ Ext.application({
         // Destroy the #appLoadingIndicator element
         Ext.fly('appLoadingIndicator').destroy();
 
+	    console.log('Creating data store');
+        smokerDataStore = Ext.getStore('SmokerDataStore');
+        console.log(smokerDataStore);
+
 	    console.log('Adding MyAppName.view.Main to Viewport');
-        
         // Initialize the main view
         Ext.Viewport.add(Ext.create('MyAppName.view.Main'));
     },

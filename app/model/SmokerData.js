@@ -3,7 +3,8 @@ Ext.define('MyAppName.model.SmokerData', {
     config: {
         fields: [
             { name: 'id', type: 'int' },
-            { name: 'name', type: 'string' }
+            { name: 'smokerTemp', type: 'string' },
+            { name: 'meatTemp', type: 'string' }
         ]
     }
 });
