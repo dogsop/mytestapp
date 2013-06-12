@@ -1,7 +1,7 @@
 archive/
 build/
 packages/
-resouces/sass/.sass-cache/
+resources/sass/.sass-cache/
 
 # Use wildcards as well
 *~
