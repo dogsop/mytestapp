@@ -26,12 +26,12 @@ Ext.define('MyAppName.view.TempMonitor', {
                                 title: 'Smellydog Smoker Monitor'
                             },
                             {
-                            	id: 'vSmokerPanel',
+                            	itemId: 'smokerPanel',
                                 xtype: 'tempdisplaypanel',
                                 flex: 1
                             },
                             {
-                            	id: 'vMeatPanel',
+                            	itemId: 'meatPanel',
                                 xtype: 'tempdisplaypanel',
                                 flex: 1
                             }
@@ -50,12 +50,12 @@ Ext.define('MyAppName.view.TempMonitor', {
                                 title: 'Smellydog Smoker Monitor'
                             },
                             {
-                            	id: 'hSmokerPanel',
+                            	itemId: 'smokerPanel',
                                 xtype: 'tempdisplaypanel',
                                 flex: 1
                             },
                             {
-                            	id: 'hMeatPanel',
+                            	itemId: 'meatPanel',
                                 xtype: 'tempdisplaypanel',
                                 flex: 1
                             }

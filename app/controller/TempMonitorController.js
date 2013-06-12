@@ -1,18 +1,27 @@
+var smokerData = { smokerTemp: '---', meatTemp: '---' };
+
 Ext.define('MyAppName.controller.TempMonitorController', {
     extend: 'Ext.app.Controller',
 
     config: {
         refs: {
-        	vSmokerPanel: '#vSmokerPanel',
-        	hSmokerPanel: '#hSmokerPanel',
-        	vMeatPanel:   '#vMeatPanel',
-        	hMeatPanel:   '#hMeatPanel'
+           	vLayoutPanel:   '#vLayoutPanel',
+           	hLayoutPanel:   '#hLayoutPanel'
         }
     },
 
+    vLayoutPanel: null,
+    hLayoutPanel: null,
+    
     launch: function() {
         console.log('TempMonitorController.launch called');
 
+        this.vLayoutPanel = this.getVLayoutPanel();
+        console.log(this.vLayoutPanel);
+        
+        this.hLayoutPanel = this.getHLayoutPanel();
+        console.log(this.hLayoutPanel);
+        
         var myVar1=setTimeout(function(){myTimer()},2000);
         
         var myVar2=setInterval(function(){myTimer()},10000);
@@ -20,19 +29,22 @@ Ext.define('MyAppName.controller.TempMonitorController', {
     
     updateDisplay: function() {
         console.log('TempMonitorController.updateDisplay called');
-    	var vSmokerPanel = this.getVSmokerPanel();
-    	var hSmokerPanel = this.getHSmokerPanel();
-    	var vMeatPanel = this.getVMeatPanel();
-    	var hMeatPanel = this.getHMeatPanel();
         
-        vSmokerPanel.setTemperature(smokerData.smokerTemp);
-        hSmokerPanel.setTemperature(smokerData.smokerTemp);
-        vMeatPanel.setTemperature(smokerData.meatTemp);
-        hMeatPanel.setTemperature(smokerData.meatTemp);
+    	var smokerPanel = this.vLayoutPanel.getComponent('smokerPanel');
+        smokerPanel.setTemperature(smokerData.smokerTemp);
+
+        smokerPanel = this.hLayoutPanel.getComponent('smokerPanel');
+        smokerPanel.setTemperature(smokerData.smokerTemp);
+
+    	var meatPanel = this.vLayoutPanel.getComponent('meatPanel');
+        meatPanel.setTemperature(smokerData.meatTemp);
+
+    	meatPanel = this.hLayoutPanel.getComponent('meatPanel');
+        meatPanel.setTemperature(smokerData.meatTemp);
+        
     }
 });
 
-setInterval("javascript function",milliseconds);
 
 function myTimer()
 {

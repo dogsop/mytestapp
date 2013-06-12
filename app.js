@@ -14,8 +14,6 @@
 //@require @packageOverrides
 
 
-var smokerData = { smokerTemp: '---', meatTemp: '---' };
-
 //<debug>
 Ext.Loader.setPath({
     'Ext': 'touch/src'
@@ -36,8 +34,6 @@ Ext.application({
     ],
 
     models: [ 'SmokerData' ],
-    
-    stores: [ 'SmokerDataStore' ],
     
     icon: {
         '57': 'resources/icons/Icon.png',
@@ -60,10 +56,6 @@ Ext.application({
     launch: function() {
         // Destroy the #appLoadingIndicator element
         Ext.fly('appLoadingIndicator').destroy();
-
-        console.log('calling updateTemps');
-        updateTemps();
-        console.log('returned from updateTemps');
 
 	    console.log('Adding MyAppName.view.Main to Viewport');
         // Initialize the main view
