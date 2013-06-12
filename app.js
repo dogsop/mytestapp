@@ -30,7 +30,7 @@ Ext.application({
     controllers: [ 'TempMonitorController' ],
     
     views: [
-        'Main', 'TempMonitor', 'Timers', 'TempDisplay'
+        'Main', 'TempMonitor', 'Timers', 'TempDisplay', 'TimerDisplay'
     ],
 
     models: [ 'SmokerData' ],

@@ -87,21 +87,21 @@ Ext.define('MyAppName.view.TempMonitor', {
         } else {
     	    console.log('vLayoutPanel found');
     	    console.log('Looking for temp panels');
-    	    var vSmokerPanel = vLayoutPanel.getComponent('vSmokerPanel'); 
-            if (vSmokerPanel == undefined) {
-        	    console.log('vSmokerPanel not found');
+    	    var smokerPanel = vLayoutPanel.getComponent('smokerPanel'); 
+            if (smokerPanel == undefined) {
+        	    console.log('smokerPanel not found');
             } else {
-        	    console.log('vSmokerPanel found');
-        	    vSmokerPanel.setTitleLabel('Smoker');
+        	    console.log('smokerPanel found');
+        	    smokerPanel.setTitleLabel('Smoker');
         	    //vSmokerPanel.setTemperature(smokerData.smokerTemp);
             }
     	    
-    	    var vMeatPanel = vLayoutPanel.getComponent('vMeatPanel'); 
-            if (vMeatPanel == undefined) {
-        	    console.log('vMeatPanel not found');
+    	    var meatPanel = vLayoutPanel.getComponent('meatPanel'); 
+            if (meatPanel == undefined) {
+        	    console.log('meatPanel not found');
             } else {
-        	    console.log('vMeatPanel found');
-        	    vMeatPanel.setTitleLabel('Meat');
+        	    console.log('meatPanel found');
+        	    meatPanel.setTitleLabel('Meat');
         	    //vMeatPanel.setTemperature(smokerData.meatTemp);
             }
         }
@@ -112,21 +112,21 @@ Ext.define('MyAppName.view.TempMonitor', {
         } else {
     	    console.log('hLayoutPanel found');
     	    console.log('Looking for temp panels');
-    	    var hSmokerPanel = hLayoutPanel.getComponent('hSmokerPanel'); 
-            if (hSmokerPanel == undefined) {
-        	    console.log('hSmokerPanel not found');
+    	    var smokerPanel = hLayoutPanel.getComponent('smokerPanel'); 
+            if (smokerPanel == undefined) {
+        	    console.log('smokerPanel not found');
             } else {
-        	    console.log('hSmokerPanel found');
-        	    hSmokerPanel.setTitleLabel('Smoker');
+        	    console.log('smokerPanel found');
+        	    smokerPanel.setTitleLabel('Smoker');
         	    //hSmokerPanel.setTemperature(smokerData.smokerTemp);
             }
     	    
-    	    var hMeatPanel = hLayoutPanel.getComponent('hMeatPanel'); 
-            if (hMeatPanel == undefined) {
-        	    console.log('hMeatPanel not found');
+    	    var meatPanel = hLayoutPanel.getComponent('meatPanel'); 
+            if (meatPanel == undefined) {
+        	    console.log('meatPanel not found');
             } else {
-        	    console.log('hMeatPanel found');
-        	    hMeatPanel.setTitleLabel('Meat');
+        	    console.log('meatPanel found');
+        	    meatPanel.setTitleLabel('Meat');
         	    //hMeatPanel.setTemperature(smokerData.meatTemp);
             }
         }
