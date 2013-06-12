@@ -27,7 +27,7 @@ Ext.application({
         'Ext.MessageBox'
     ],
 
-    controllers: [ 'TempMonitorController' ],
+    controllers: [ 'TempMonitorController', 'TimerMonitorController' ],
     
     views: [
         'Main', 'TempMonitor', 'Timers', 'TempDisplay', 'TimerDisplay'

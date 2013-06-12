@@ -14,7 +14,7 @@ Ext.define('MyAppName.view.Timers', {
 
 
 		items : [ {
-			itemId : 'vLayoutPanel',
+			itemId : 'vTimerLayoutPanel',
 			xtype : 'panel',
 			layout : {
 				type : 'vbox'
@@ -33,7 +33,7 @@ Ext.define('MyAppName.view.Timers', {
 				flex : 1
 			} ]
 		}, {
-			itemId : 'hLayoutPanel',
+			itemId : 'hTimerLayoutPanel',
 			xtype : 'panel',
 			layout : {
 				type : 'hbox'
@@ -72,13 +72,13 @@ Ext.define('MyAppName.view.Timers', {
 	    // Add a Listener. Listen for [Viewport ~ Orientation] Change.
 	    Ext.Viewport.on('orientationchange', 'handleOrientationChange', this, {buffer: 50 });
 
-	    var vLayoutPanel = this.getComponent('vLayoutPanel'); 
-        if (vLayoutPanel == undefined) {
-    	    console.log('vLayoutPanel not found');
+	    var vTimerLayoutPanel = this.getComponent('vTimerLayoutPanel'); 
+        if (vTimerLayoutPanel == undefined) {
+    	    console.log('vTimerLayoutPanel not found');
         } else {
-    	    console.log('vLayoutPanel found');
+    	    console.log('vTimerLayoutPanel found');
     	    console.log('Looking for timer panels');
-    	    var timer1Panel = vLayoutPanel.getComponent('timer1Panel'); 
+    	    var timer1Panel = vTimerLayoutPanel.getComponent('timer1Panel'); 
             if (timer1Panel == undefined) {
         	    console.log('timer1Panel not found');
             } else {
@@ -87,7 +87,7 @@ Ext.define('MyAppName.view.Timers', {
         	    //vSmokerPanel.setTemperature(smokerData.smokerTemp);
             }
     	    
-    	    var timer2Panel = vLayoutPanel.getComponent('timer2Panel'); 
+    	    var timer2Panel = vTimerLayoutPanel.getComponent('timer2Panel'); 
             if (timer2Panel == undefined) {
         	    console.log('timer2Panel not found');
             } else {
@@ -97,13 +97,13 @@ Ext.define('MyAppName.view.Timers', {
             }
         }
     	
-	    var hLayoutPanel = this.getComponent('hLayoutPanel'); 
-        if (hLayoutPanel == undefined) {
-    	    console.log('hLayoutPanel not found');
+	    var hTimerLayoutPanel = this.getComponent('hTimerLayoutPanel'); 
+        if (hTimerLayoutPanel == undefined) {
+    	    console.log('hTimerLayoutPanel not found');
         } else {
-    	    console.log('hLayoutPanel found');
+    	    console.log('hTimerLayoutPanel found');
     	    console.log('Looking for temp panels');
-    	    var timer1Panel = hLayoutPanel.getComponent('timer1Panel'); 
+    	    var timer1Panel = hTimerLayoutPanel.getComponent('timer1Panel'); 
             if (timer1Panel == undefined) {
         	    console.log('timer1Panel not found');
             } else {
@@ -112,7 +112,7 @@ Ext.define('MyAppName.view.Timers', {
         	    //hSmokerPanel.setTemperature(smokerData.smokerTemp);
             }
     	    
-    	    var timer2Panel = hLayoutPanel.getComponent('timer2Panel'); 
+    	    var timer2Panel = hTimerLayoutPanel.getComponent('timer2Panel'); 
             if (timer2Panel == undefined) {
         	    console.log('timer2Panel not found');
             } else {
