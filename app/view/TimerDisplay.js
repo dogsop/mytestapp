@@ -33,7 +33,7 @@ Ext.define('MyAppName.view.TimerDisplay', {
                     text: 'Start',
                     height: '30%',
                     ui: 'action-round'
-                },
+                }
             ]
     },
 
