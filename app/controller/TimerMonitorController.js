@@ -17,6 +17,8 @@ Ext.define('MyAppName.controller.TimerMonitorController', {
     timer2StartDate: null,
     timer1Running: false,
     timer2Running: false,
+    timer1String: '00:00:00',
+    timer2String: '00:00:00',
     
     launch: function() {
         console.log('TimerMonitorController.launch called');
@@ -27,11 +29,11 @@ Ext.define('MyAppName.controller.TimerMonitorController', {
         this.hTimerLayoutPanel = this.getHTimerLayoutPanel();
         console.log(this.hTimerLayoutPanel);
         
-        var myVar1=setTimeout(function(){pollCookingTimers()},8000);
+        var myVar1=setTimeout(function(){pollCookingTimers()},3000);
         
-        var myVar2=setInterval(function(){pollCookingTimers()},20000);
+        var myVar2=setInterval(function(){pollCookingTimers()},30000);
         
-        var myVar3=setInterval(function(){updateCookingTimers()},800);
+        var myVar3=setInterval(function(){updateCookingTimers()},300);
         
     },
     
@@ -96,11 +98,15 @@ Ext.define('MyAppName.controller.TimerMonitorController', {
 			var timeString = pad(hours) + ':' + pad(minutes) + ':' + pad(seconds);
 			//console.log(timeString);
 
-	    	var timer1Panel = this.vTimerLayoutPanel.getComponent('timer1Panel');
-    		timer1Panel.setTimerString(timeString);
+			if(this.timer1String != timeString) {
+				this.timer1String = timeString;
 
-	    	timer1Panel = this.hTimerLayoutPanel.getComponent('timer1Panel');
-    		timer1Panel.setTimerString(timeString);
+				var timer1Panel = this.vTimerLayoutPanel.getComponent('timer1Panel');
+	    		timer1Panel.setTimerString(timeString);
+
+		    	timer1Panel = this.hTimerLayoutPanel.getComponent('timer1Panel');
+	    		timer1Panel.setTimerString(timeString);
+			}
     	} 
     	
     	if(this.timer2Running == true
@@ -120,11 +126,16 @@ Ext.define('MyAppName.controller.TimerMonitorController', {
 			var timeString = pad(hours) + ':' + pad(minutes) + ':' + pad(seconds);
 			//console.log(timeString);
 
-	    	var timer2Panel = this.vTimerLayoutPanel.getComponent('timer2Panel');
-    		timer2Panel.setTimerString(timeString);
+			if(this.timer2String != timeString) {
+				this.timer2String = timeString;
 
-	    	timer2Panel = this.hTimerLayoutPanel.getComponent('timer2Panel');
-    		timer2Panel.setTimerString(timeString);
+		    	var timer2Panel = this.vTimerLayoutPanel.getComponent('timer2Panel');
+	    		timer2Panel.setTimerString(timeString);
+
+		    	timer2Panel = this.hTimerLayoutPanel.getComponent('timer2Panel');
+	    		timer2Panel.setTimerString(timeString);
+			}
+			
     	} 
     }
 });
