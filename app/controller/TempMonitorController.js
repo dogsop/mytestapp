@@ -24,9 +24,9 @@ Ext.define('MyAppName.controller.TempMonitorController', {
         this.hLayoutPanel = tempMonitorPanel.getComponent('hLayoutPanel');
         console.log(this.hLayoutPanel);
         
-        var myVar1=setTimeout(function(){myTimer()},2000);
+        var myVar1=setTimeout(function(){tempMonitorTimer()},2000);
         
-        var myVar2=setInterval(function(){myTimer()},10000);
+        var myVar2=setInterval(function(){tempMonitorTimer()},10000);
     },
     
     updateDisplay: function() {
@@ -48,9 +48,9 @@ Ext.define('MyAppName.controller.TempMonitorController', {
 });
 
 
-function myTimer()
+function tempMonitorTimer()
 {
-    console.log('myTimer called');
+    console.log('tempMonitorTimer called');
     updateTemps();
 }
 

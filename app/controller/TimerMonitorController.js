@@ -50,15 +50,24 @@ Ext.define('MyAppName.controller.TimerMonitorController', {
         //console.log('TimerMonitorController.updateDisplay called');
 
         if(this.timer1Running != timerData.timer1Running) {
+        	//console.log('this.timer1Running != timerData.timer1Running');
+        	//console.log(timerData);
         	this.timer1Running = timerData.timer1Running;
         	if(this.timer1Running) {
+        		//console.log('this.timer1Running == true');
         		if(timerData.timer1Start != null) {
+        			//console.log('timerData.timer1Start != null');
             		var newTimer1StartDate = new Date(timerData.timer1Start);
+            		//console.log(newTimer1StartDate);
         			if(this.timer1StartDate == null
         					|| newTimer1StartDate.getTime() != this.timer1StartDate.getTime()) {
+        				//console.log('this.timer1StartDate = newTimer1StartDate');
         				this.timer1StartDate = newTimer1StartDate;
+        				//console.log(this.timer1StartDate);
         			}
         		}
+        	} else {
+        		//console.log('this.timer1Running == false');
         	}
 
         	var timer1Panel = this.vTimerLayoutPanel.getComponent('timer1Panel');
@@ -70,6 +79,7 @@ Ext.define('MyAppName.controller.TimerMonitorController', {
         }
         
         if(this.timer2Running != timerData.timer2Running) {
+        	//console.log('this.timer1Running != timerData.timer1Running');
         	this.timer2Running = timerData.timer2Running;
         	if(this.timer2Running) {
         		if(timerData.timer2Start != null) {
@@ -92,19 +102,22 @@ Ext.define('MyAppName.controller.TimerMonitorController', {
     	if(this.timer1Running == true
     			&& this.timer1StartDate != null) {
     		var currentTime = new Date();
-    		//console.log(currentTime);
+    		var currentUtcTime = convertDateToUTC(currentTime);
+    		//console.log(currentUtcTime);
     		
 			var timeInterval = currentTime.getTime() - this.timer1StartDate.getTime();
+			//console.log(timeInterval);
 			
 			if(timeInterval < 0) {
 				timeInterval = 0;
 			}
 
-			//take out milliseconds
-			timeInterval = timeInterval/1000;
+			timeInterval = timeInterval/1000; 
 			var seconds = Math.floor(timeInterval % 60);
+			//console.log(seconds);
 			timeInterval = timeInterval/60; 
 			var minutes = Math.floor(timeInterval % 60);
+			//console.log(minutes);
 			timeInterval = timeInterval/60; 
 			var hours = Math.floor(timeInterval % 24);
 			//var timeString = sprintf("%02d:%02d:%02d", hours, minutes, seconds);
@@ -125,12 +138,12 @@ Ext.define('MyAppName.controller.TimerMonitorController', {
     	if(this.timer2Running == true
     			&& this.timer2StartDate != null) {
     		var currentTime = new Date();
+    		var currentUtcTime = convertDateToUTC(currentTime);
     		//console.log(currentTime);
     		
-			var timeInterval = currentTime.getTime() - this.timer2StartDate.getTime();
+			var timeInterval = currentUtcTime.getTime() - this.timer2StartDate.getTime();
 
-			//take out milliseconds
-			timeInterval = timeInterval/2000;
+			timeInterval = timeInterval/1000; 
 			var seconds = Math.floor(timeInterval % 60);
 			timeInterval = timeInterval/60; 
 			var minutes = Math.floor(timeInterval % 60);
@@ -159,12 +172,23 @@ Ext.define('MyAppName.controller.TimerMonitorController', {
     	console.log(timerPanel);
     	var timerNumber = timerPanel.getTimerNumber();
     	console.log(timerNumber);
+    	var action;
+    	if(timerPanel.getTimerEnabled()) {
+    		action = 'stop';
+    	} else {
+    		action = 'start';
+    	}
+    	updateCookingTimers(timerNumber, action);
     }
 });
 
 function pad(n) {
     return (n < 10) ? ("0" + n) : n;
 };
+
+function convertDateToUTC(date) { 
+	return new Date(date.getUTCFullYear(), date.getUTCMonth(), date.getUTCDate(), date.getUTCHours(), date.getUTCMinutes(), date.getUTCSeconds()); 
+}
 
 function pollCookingTimers()
 {
@@ -210,7 +234,7 @@ function pollCookingTimers()
     });
 }
 
-function updateCookingTimers()
+function updateCookingTimers(timerNumber, action)
 {
     console.log('updateCookingTimers called');
     Ext.Ajax.request({
@@ -219,6 +243,10 @@ function updateCookingTimers()
         headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json'
+        },
+        params: {
+        	id: timerNumber,
+        	action: action
         },
         timeout: 30000,
 
@@ -231,9 +259,9 @@ function updateCookingTimers()
                 	}
               //console.log(response.responseText);
                 if(response.status == 200) {
-                    console.log('in updateTimers, success');
-                    timerData = Ext.JSON.decode(response.responseText);
-                    console.log(timerData);
+                    console.log('in updateCookingTimers, success');
+                    //timerData = Ext.JSON.decode(response.responseText);
+                    //console.log(timerData);
                 }
                 // handle search result
             } else {
