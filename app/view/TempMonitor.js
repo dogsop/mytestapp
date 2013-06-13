@@ -23,7 +23,7 @@ Ext.define('MyAppName.view.TempMonitor', {
                             {
                                 docked: 'top',
                                 xtype: 'titlebar',
-                                title: 'Smellydog Smoker Monitor'
+                                title: 'Smoker Monitor'
                             },
                             {
                             	itemId: 'smokerPanel',
