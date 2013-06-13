@@ -6,6 +6,7 @@ Ext.define('MyAppName.view.TimerDisplay', {
 
     	titleLabel: 'Timer1',
 
+    	timerNumber: 0,
     	timerEnabled: false,
     	timerString: '00:00:00',
     	
@@ -32,7 +33,8 @@ Ext.define('MyAppName.view.TimerDisplay', {
                     cls: 'modus-button primary',
                     text: 'Start',
                     height: '30%',
-                    ui: 'action-round'
+                    ui: 'action-round',
+                    action: 'startstoptimer'
                 }
             ]
     },

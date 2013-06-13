@@ -5,6 +5,11 @@ Ext.define('MyAppName.controller.TimerMonitorController', {
     extend: 'Ext.app.Controller',
 
     config: {
+    	control: {
+    		'button[action=startstoptimer]': {
+    			tap: 'doStartStopTimer'
+    		}
+    	},
         refs: {
         	timersPanel:		 'timerspanel'
         }
@@ -37,7 +42,7 @@ Ext.define('MyAppName.controller.TimerMonitorController', {
         
         var myVar2=setInterval(function(){pollCookingTimers()},30000);
         
-        var myVar3=setInterval(function(){updateCookingTimers()},300);
+        var myVar3=setInterval(function(){updateCookingTimerDisplay()},300);
         
     },
     
@@ -145,6 +150,15 @@ Ext.define('MyAppName.controller.TimerMonitorController', {
 			}
 			
     	} 
+    },
+    
+    doStartStopTimer: function(btn) {
+    	console.log('controller: button pressed');
+    	console.log(btn);
+    	var timerPanel = btn.up();
+    	console.log(timerPanel);
+    	var timerNumber = timerPanel.getTimerNumber();
+    	console.log(timerNumber);
     }
 });
 
@@ -196,8 +210,52 @@ function pollCookingTimers()
     });
 }
 
-function updateCookingTimers() {
-    //console.log('in updateCookingTimers');
+function updateCookingTimers()
+{
+    console.log('updateCookingTimers called');
+    Ext.Ajax.request({
+        url: '../smoker/readtimers.php',
+        method: 'POST',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        timeout: 30000,
+
+        success: function(response, opts) {
+            if (response && response.responseText) {
+                //console.log('in updateTimers, response returned');
+            	//console.log(response);
+                for (var key in response) {
+                	//console.log(key);
+                	}
+              //console.log(response.responseText);
+                if(response.status == 200) {
+                    console.log('in updateTimers, success');
+                    timerData = Ext.JSON.decode(response.responseText);
+                    console.log(timerData);
+                }
+                // handle search result
+            } else {
+                console.log('in updateTimers, error');
+                // handle error response
+            }
+        }, failure: function(response, opts) {
+            console.log('in updateTimers, failure');
+            if (response && response.responseText) {
+                console.log('in updateTimers, response returned');
+                console.log(response);
+                console.log('response.responseText - ' . response.responseText);
+            } else {
+                console.log('in updateTimers, error');
+                // handle error response
+            }
+        }
+    });
+}
+
+function updateCookingTimerDisplay() {
+    //console.log('in updateCookingTimerDisplay');
 	
 	//console.log('calling controller');
     MyAppName.app.getController('TimerMonitorController').updateDisplay();

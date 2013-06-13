@@ -84,6 +84,7 @@ Ext.define('MyAppName.view.Timers', {
             } else {
         	    console.log('timer1Panel found');
         	    timer1Panel.updateTitleLabel('Timer 1');
+            	timer1Panel.setTimerNumber(1);
         	    //vSmokerPanel.setTemperature(smokerData.smokerTemp);
             }
     	    
@@ -93,6 +94,8 @@ Ext.define('MyAppName.view.Timers', {
             } else {
         	    console.log('timer2Panel found');
         	    timer2Panel.updateTitleLabel('Timer 2');
+            	timer2Panel.setTimerNumber(2);
+
         	    //vMeatPanel.setTemperature(smokerData.meatTemp);
             }
         }
@@ -109,6 +112,7 @@ Ext.define('MyAppName.view.Timers', {
             } else {
         	    console.log('timer1Panel found');
         	    timer1Panel.updateTitleLabel('Timer 1');
+            	timer1Panel.setTimerNumber(1);
         	    //hSmokerPanel.setTemperature(smokerData.smokerTemp);
             }
     	    
@@ -118,6 +122,7 @@ Ext.define('MyAppName.view.Timers', {
             } else {
         	    console.log('timer2Panel found');
         	    timer2Panel.updateTitleLabel('Timer 2');
+            	timer2Panel.setTimerNumber(2);
         	    //hMeatPanel.setTemperature(smokerData.meatTemp);
             }
         }
