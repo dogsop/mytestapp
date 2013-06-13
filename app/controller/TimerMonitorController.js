@@ -6,8 +6,7 @@ Ext.define('MyAppName.controller.TimerMonitorController', {
 
     config: {
         refs: {
-        	vTimerLayoutPanel:   '#vTimerLayoutPanel',
-        	hTimerLayoutPanel:   '#hTimerLayoutPanel'
+        	timersPanel:		 'timerspanel'
         }
     },
 
@@ -23,11 +22,16 @@ Ext.define('MyAppName.controller.TimerMonitorController', {
     launch: function() {
         console.log('TimerMonitorController.launch called');
 
-        this.vTimerLayoutPanel = this.getVTimerLayoutPanel();
+        var timersPanel = this.getTimersPanel();
+        console.log(timersPanel);
+        
+
+        this.vTimerLayoutPanel = timersPanel.getComponent('vLayoutPanel');
         console.log(this.vTimerLayoutPanel);
         
-        this.hTimerLayoutPanel = this.getHTimerLayoutPanel();
+        this.hTimerLayoutPanel = timersPanel.getComponent('hLayoutPanel');
         console.log(this.hTimerLayoutPanel);
+        
         
         var myVar1=setTimeout(function(){pollCookingTimers()},3000);
         
@@ -86,6 +90,10 @@ Ext.define('MyAppName.controller.TimerMonitorController', {
     		//console.log(currentTime);
     		
 			var timeInterval = currentTime.getTime() - this.timer1StartDate.getTime();
+			
+			if(timeInterval < 0) {
+				timeInterval = 0;
+			}
 
 			//take out milliseconds
 			timeInterval = timeInterval/1000;

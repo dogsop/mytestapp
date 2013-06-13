@@ -5,8 +5,7 @@ Ext.define('MyAppName.controller.TempMonitorController', {
 
     config: {
         refs: {
-           	vLayoutPanel:   '#vLayoutPanel',
-           	hLayoutPanel:   '#hLayoutPanel'
+        	tempMonitorPanel:		 'tempmonitorpanel'
         }
     },
 
@@ -16,10 +15,13 @@ Ext.define('MyAppName.controller.TempMonitorController', {
     launch: function() {
         console.log('TempMonitorController.launch called');
 
-        this.vLayoutPanel = this.getVLayoutPanel();
+        var tempMonitorPanel = this.getTempMonitorPanel();
+        console.log(tempMonitorPanel);
+        
+        this.vLayoutPanel = tempMonitorPanel.getComponent('vLayoutPanel');
         console.log(this.vLayoutPanel);
         
-        this.hLayoutPanel = this.getHLayoutPanel();
+        this.hLayoutPanel = tempMonitorPanel.getComponent('hLayoutPanel');
         console.log(this.hLayoutPanel);
         
         var myVar1=setTimeout(function(){myTimer()},2000);

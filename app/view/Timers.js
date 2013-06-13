@@ -14,7 +14,7 @@ Ext.define('MyAppName.view.Timers', {
 
 
 		items : [ {
-			itemId : 'vTimerLayoutPanel',
+			itemId : 'vLayoutPanel',
 			xtype : 'panel',
 			layout : {
 				type : 'vbox'
@@ -33,7 +33,7 @@ Ext.define('MyAppName.view.Timers', {
 				flex : 1
 			} ]
 		}, {
-			itemId : 'hTimerLayoutPanel',
+			itemId : 'hLayoutPanel',
 			xtype : 'panel',
 			layout : {
 				type : 'hbox'
@@ -72,7 +72,7 @@ Ext.define('MyAppName.view.Timers', {
 	    // Add a Listener. Listen for [Viewport ~ Orientation] Change.
 	    Ext.Viewport.on('orientationchange', 'handleOrientationChange', this, {buffer: 50 });
 
-	    var vTimerLayoutPanel = this.getComponent('vTimerLayoutPanel'); 
+	    var vTimerLayoutPanel = this.getComponent('vLayoutPanel'); 
         if (vTimerLayoutPanel == undefined) {
     	    console.log('vTimerLayoutPanel not found');
         } else {
@@ -97,7 +97,7 @@ Ext.define('MyAppName.view.Timers', {
             }
         }
     	
-	    var hTimerLayoutPanel = this.getComponent('hTimerLayoutPanel'); 
+	    var hTimerLayoutPanel = this.getComponent('hLayoutPanel'); 
         if (hTimerLayoutPanel == undefined) {
     	    console.log('hTimerLayoutPanel not found');
         } else {
