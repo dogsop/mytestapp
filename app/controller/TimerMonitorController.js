@@ -13,6 +13,10 @@ Ext.define('MyAppName.controller.TimerMonitorController', {
 
     vTimerLayoutPanel: null,
     hTimerLayoutPanel: null,
+    timer1StartDate: null,
+    timer2StartDate: null,
+    timer1Running: false,
+    timer2Running: false,
     
     launch: function() {
         console.log('TimerMonitorController.launch called');
@@ -25,50 +29,113 @@ Ext.define('MyAppName.controller.TimerMonitorController', {
         
         var myVar1=setTimeout(function(){pollCookingTimers()},8000);
         
-        //var myVar2=setInterval(function(){myTimer()},10000);
+        var myVar2=setInterval(function(){pollCookingTimers()},20000);
+        
+        var myVar3=setInterval(function(){updateCookingTimers()},800);
+        
     },
     
     updateDisplay: function() {
-        console.log('TimerMonitorController.updateDisplay called');
+        //console.log('TimerMonitorController.updateDisplay called');
+
+        if(this.timer1Running != timerData.timer1Running) {
+        	this.timer1Running = timerData.timer1Running;
+        	if(this.timer1Running) {
+        		if(timerData.timer1Start != null) {
+            		var newTimer1StartDate = new Date(timerData.timer1Start);
+        			if(this.timer1StartDate == null
+        					|| newTimer1StartDate.getTime() != this.timer1StartDate.getTime()) {
+        				this.timer1StartDate = newTimer1StartDate;
+        			}
+        		}
+        	}
+
+        	var timer1Panel = this.vTimerLayoutPanel.getComponent('timer1Panel');
+        	timer1Panel.setTimerEnabled(this.timer1Running);
+
+        	timer1Panel = this.hTimerLayoutPanel.getComponent('timer1Panel');
+        	timer1Panel.setTimerEnabled(this.timer1Running);
+        	
+        }
         
-    	var timer1Panel = this.vTimerLayoutPanel.getComponent('timer1Panel');
-    	if(timerData.timer1Running) {
-    		timer1Panel.setTimerStartTimeString(timerData.timer1Start);
-    	}
-    	timer1Panel.setTimerEnabled(timerData.timer1Running);
+        if(this.timer2Running != timerData.timer2Running) {
+        	this.timer2Running = timerData.timer2Running;
+        	if(this.timer2Running) {
+        		if(timerData.timer2Start != null) {
+            		var newTimer2StartDate = new Date(timerData.timer2Start);
+        			if(this.timer2StartDate == null
+        					|| newTimer2StartDate.getTime() != this.timer2StartDate.getTime()) {
+        				this.timer2StartDate = newTimer2StartDate;
+        			}
+        		}
+        	}
 
-    	timer1Panel = this.hTimerLayoutPanel.getComponent('timer1Panel');
-    	if(timerData.timer1Running) {
-    		timer1Panel.setTimerStartTimeString(timerData.timer1Start);
-    	}
-    	timer1Panel.setTimerEnabled(timerData.timer1Running);
+        	var timer2Panel = this.vTimerLayoutPanel.getComponent('timer2Panel');
+        	timer2Panel.setTimerEnabled(this.timer2Running);
 
-    	var timer2Panel = this.vTimerLayoutPanel.getComponent('timer2Panel');
-    	if(timerData.timer2Running) {
-    		timer2Panel.setTimerStartTimeString(timerData.timer2Start);
-    	}
-    	timer2Panel.setTimerEnabled(timerData.timer2Running);
+        	timer2Panel = this.hTimerLayoutPanel.getComponent('timer2Panel');
+        	timer2Panel.setTimerEnabled(this.timer2Running);
+        	
+        }
+        
+    	if(this.timer1Running == true
+    			&& this.timer1StartDate != null) {
+    		var currentTime = new Date();
+    		//console.log(currentTime);
+    		
+			var timeInterval = currentTime.getTime() - this.timer1StartDate.getTime();
 
-    	timer2Panel = this.hTimerLayoutPanel.getComponent('timer2Panel');
-    	if(timerData.timer2Running) {
-    		timer2Panel.setTimerStartTimeString(timerData.timer2Start);
-    	}
-    	timer2Panel.setTimerEnabled(timerData.timer2Running);
+			//take out milliseconds
+			timeInterval = timeInterval/1000;
+			var seconds = Math.floor(timeInterval % 60);
+			timeInterval = timeInterval/60; 
+			var minutes = Math.floor(timeInterval % 60);
+			timeInterval = timeInterval/60; 
+			var hours = Math.floor(timeInterval % 24);
+			//var timeString = sprintf("%02d:%02d:%02d", hours, minutes, seconds);
+			var timeString = pad(hours) + ':' + pad(minutes) + ':' + pad(seconds);
+			//console.log(timeString);
 
+	    	var timer1Panel = this.vTimerLayoutPanel.getComponent('timer1Panel');
+    		timer1Panel.setTimerString(timeString);
+
+	    	timer1Panel = this.hTimerLayoutPanel.getComponent('timer1Panel');
+    		timer1Panel.setTimerString(timeString);
+    	} 
+    	
+    	if(this.timer2Running == true
+    			&& this.timer2StartDate != null) {
+    		var currentTime = new Date();
+    		//console.log(currentTime);
+    		
+			var timeInterval = currentTime.getTime() - this.timer2StartDate.getTime();
+
+			//take out milliseconds
+			timeInterval = timeInterval/2000;
+			var seconds = Math.floor(timeInterval % 60);
+			timeInterval = timeInterval/60; 
+			var minutes = Math.floor(timeInterval % 60);
+			timeInterval = timeInterval/60; 
+			var hours = Math.floor(timeInterval % 24);
+			var timeString = pad(hours) + ':' + pad(minutes) + ':' + pad(seconds);
+			//console.log(timeString);
+
+	    	var timer2Panel = this.vTimerLayoutPanel.getComponent('timer2Panel');
+    		timer2Panel.setTimerString(timeString);
+
+	    	timer2Panel = this.hTimerLayoutPanel.getComponent('timer2Panel');
+    		timer2Panel.setTimerString(timeString);
+    	} 
     }
 });
 
+function pad(n) {
+    return (n < 10) ? ("0" + n) : n;
+};
 
 function pollCookingTimers()
 {
-    console.log('myTimer called');
-    updateCookingTimers();
-}
-
-function updateCookingTimers() {
-
-    console.log('in updateTimers');
-	
+    console.log('pollCookingTimers called');
     Ext.Ajax.request({
         url: '../smoker/readtimers.php',
         method: 'GET',
@@ -90,9 +157,6 @@ function updateCookingTimers() {
                     console.log('in updateTimers, success');
                     timerData = Ext.JSON.decode(response.responseText);
                     console.log(timerData);
-                    
-                  //console.log('calling controller');
-                    MyAppName.app.getController('TimerMonitorController').updateDisplay();
                 }
                 // handle search result
             } else {
@@ -111,5 +175,12 @@ function updateCookingTimers() {
             }
         }
     });
+}
+
+function updateCookingTimers() {
+    //console.log('in updateCookingTimers');
+	
+	//console.log('calling controller');
+    MyAppName.app.getController('TimerMonitorController').updateDisplay();
 };
 

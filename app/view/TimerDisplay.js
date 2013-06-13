@@ -1,14 +1,13 @@
 Ext.define('MyAppName.view.TimerDisplay', {
     extend: 'Ext.Panel',
     xtype: 'timerdisplaypanel',
-	timerStartTime: null,
 
     config: {
 
     	titleLabel: 'Timer1',
 
     	timerEnabled: false,
-    	timerStartTimeString: '2010-01-01 00:00:00',
+    	timerString: '00:00:00',
     	
         styleHtmlContent: true,
         layout: 'vbox',
@@ -55,7 +54,7 @@ Ext.define('MyAppName.view.TimerDisplay', {
 		}
     },
     
-    updateTimer: function(newTimerValue, oldTimerValue) {
+    updateTimerString: function(newTimerValue, oldTimerValue) {
     	//console.log('updateTemperature called. New temperature is: ' + newTemperature);
 		var timerValue = this.getComponent('timerValue');
 		if (timerValue == undefined) {
@@ -80,20 +79,6 @@ Ext.define('MyAppName.view.TimerDisplay', {
 				}
 			}
 		}
-    },
-    
-    updateTimerStartTimeString: function(newStartTimeValue, oldStartTimeValue) {
-
-    	console.log('updateTimerStartTimeString called. newStartTimeValue is: ' + newStartTimeValue);
-    	
-    	if(newStartTimeValue == null) {
-        	console.log('newStartTimeValue == null');
-    		timerStartTime = null;
-        	setTimerEnabled(false);
-    	} else {
-    		timerStartTime = new Date(newStartTimeValue);
-        	console.log(timerStartTime);
-    	}
     }
     
     
