@@ -25,9 +25,6 @@ if($timerDataString === false) {
 	$timerData = unserialize($timerDataString);
 }
 
-echo $timerNum . PHP_EOL;
-echo $action . PHP_EOL;
-
 if($_SERVER['REQUEST_METHOD'] == 'POST') {
   $timerNum = $_POST['id'];
   $action = $_POST['action'];
