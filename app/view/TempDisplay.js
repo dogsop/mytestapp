@@ -52,7 +52,7 @@ Ext.define('MyAppName.view.TempDisplay', {
     },
 
     updateTemperature: function(newTemperature, oldTemperature) {
-    	//console.log('updateTemperature called. New temperature is: ' + newTemperature);
+    	console.log('updateTemperature called. New temperature is: ' + newTemperature);
 		var tempValue = this.getComponent('tempValue');
 		if (tempValue == undefined) {
 			console.log('tempValue not found');
@@ -60,7 +60,20 @@ Ext.define('MyAppName.view.TempDisplay', {
 			//console.log('Setting tempValue');
 			tempValue.setHtml(newTemperature);
 		}
-    }
+    },
+    
+	flagStaleTemp : function() {
+		console.log('TempDisplay ~ flagStaleTemp');
+    	var tempValue = this.getComponent('tempValue');
+        tempValue.addCls('redfont');
+	},
+
+	removeStaleFlag : function() {
+		console.log('TempDisplay ~ removeStaleFlag');
+    	var tempValue = this.getComponent('tempValue');
+        tempValue.removeCls('redfont');
+	}
+
 },
 function() {
     console.log('TempDisplay Created!');

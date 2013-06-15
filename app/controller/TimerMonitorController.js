@@ -103,7 +103,7 @@ Ext.define('MyAppName.controller.TimerMonitorController', {
     	if(this.timer1Running == true
     			&& this.timer1StartDate != null) {
     		var currentTime = new Date();
-    		var currentUtcTime = convertDateToUTC(currentTime);
+    		//var currentUtcTime = convertDateToUTC(currentTime);
     		//console.log(currentUtcTime);
     		
 			var timeInterval = currentTime.getTime() - this.timer1StartDate.getTime();
@@ -139,7 +139,7 @@ Ext.define('MyAppName.controller.TimerMonitorController', {
     	if(this.timer2Running == true
     			&& this.timer2StartDate != null) {
     		var currentTime = new Date();
-    		var currentUtcTime = convertDateToUTC(currentTime);
+    		//var currentUtcTime = convertDateToUTC(currentTime);
     		//console.log(currentUtcTime);
     		
 			var timeInterval = currentTime.getTime() - this.timer2StartDate.getTime();
